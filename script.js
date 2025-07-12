@@ -28,6 +28,10 @@ const btnCancel = document.querySelector('.btn--cancel');
 const btnFinish = document.querySelector('.btn--finish');
 const modeControls = document.querySelector('.mode-controls');
 const instructions = document.querySelector('.workout-instructions');
+const helpBtn = document.querySelector('.help-btn');
+const helpModal = document.querySelector('.help-modal');
+const helpOverlay = document.querySelector('.help-modal__overlay');
+const helpClose = document.querySelector('.help-modal__close');
 
 ////////////////////////////////////
 //// Helper Functions
@@ -112,6 +116,21 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     containerWorkouts.addEventListener('click', this._locateWorkout.bind(this));
     this._getStorage();
+
+    helpBtn.addEventListener('click', () => {
+      helpModal.classList.remove('hidden');
+      helpOverlay.classList.remove('hidden');
+    });
+
+    helpClose.addEventListener('click', () => {
+      helpModal.classList.add('hidden');
+      helpOverlay.classList.add('hidden');
+    });
+
+    helpOverlay.addEventListener('click', () => {
+      helpModal.classList.add('hidden');
+      helpOverlay.classList.add('hidden');
+    });
   }
 
   _getPosition() {
